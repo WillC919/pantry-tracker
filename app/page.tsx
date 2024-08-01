@@ -1,113 +1,116 @@
-import Image from 'next/image'
+import React from 'react';
+import { Container, Typography, Button, Box, Link, Grid, IconButton } from '@mui/material';
+import { GitHub, LinkedIn, Email } from '@mui/icons-material';
 
-export default function Home() {
+function App() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Box>
+      {/* Banner Section */}
+      <Box
+        id="banner"
+        sx={{
+          textAlign: 'center',
+          padding: '0',
+          height: '95vh',
+          color: '#fff',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          width: '100%', // Ensure it covers the entire width of the screen
+          position: 'relative',
+        }}
+      >
+        <Typography variant="h1" sx={{ mb: 2, color: '#fff' }}>Pantry Tracker</Typography>
+        <Typography variant="h5" sx={{ mb: 4, color: '#fff' }}>
+          A way to catalog your pantry
+        </Typography>
+        <Button
+          variant="contained"
+          sx={{
+            backgroundColor: '#ff5733', // Hot red color
+            color: '#fff', // White text for better contrast
+            padding: '12px 34px', // Padding for left and right
+            '&:hover': {
+              backgroundColor: '#c70039', // Slightly darker red on hover
+            },
+            maxWidth: '200px', // Set a max width for the button
+            margin: '0 auto', // Center the button horizontally
+          }}
+          href="/inventory"
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          Learn More
+        </Button>
+      </Box>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+      {/* Synopsis Section */}
+      <Box
+        id="one"
+        sx={{
+          padding: '64px 0',
+          background: 'rgba(33, 178, 166, 1)', // 85% transparent background
+          width: '100%', // Ensure it covers the entire width of the screen
+          position: 'relative',
+          margin: '0', // Remove any default margins
+        }}
+      >
+        <Container>
+          <Typography variant="h2" gutterBottom sx={{ color: '#fff', textAlign: 'center' }}>
+            Synopsis of me
+          </Typography>
+          <Box
+            sx={{
+              height: '2px',
+              width: '100%',
+              backgroundColor: '#fff',
+              margin: '16px 0', // Adjust margin to add space around the line
+            }}
+          />
+          <Typography variant="body1" paragraph sx={{ color: '#fff', textAlign: 'center' }}>
+            I am an upcoming senior majoring in Computer Science at Stony Brook University. I enjoy team-building exercises and collaborating with others, particularly those who share my passion for developing solutions through cloud computing.
+          </Typography>
+          <Grid container spacing={2} justifyContent="center">
+            <Grid item>
+              <Typography variant="h6" sx={{ color: '#fff' }}>Code</Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="h6" sx={{ color: '#fff' }}>Ideas</Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="h6" sx={{ color: '#fff' }}>Collaboration</Typography>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+      {/* Footer Section */}
+      <Box
+        id="footer"
+        sx={{
+          padding: '32px 0',
+          background: 'rgba(46, 56, 66, 0.85)', // 85% transparent background
+          textAlign: 'center',
+          width: '100%', // Ensure it covers the entire width of the screen
+          position: 'relative',
+          margin: '0', // Remove any default margins
+        }}
+      >
+        <Box sx={{ mb: 2 }}>
+          <IconButton component={Link} href="https://github.com/WillC919" color="inherit">
+            <GitHub sx={{ color: '#fff' }} />
+          </IconButton>
+          <IconButton component={Link} href="https://www.linkedin.com/in/williamlee919/" color="inherit">
+            <LinkedIn sx={{ color: '#fff' }} />
+          </IconButton>
+          <IconButton component={Link} href="mailto:will.p.lee.36@gmail.com" color="inherit">
+            <Email sx={{ color: '#fff' }} />
+          </IconButton>
+        </Box>
+        <Typography variant="body2" color="textSecondary" sx={{ color: '#fff' }}>
+          &copy; William Lee. Design: <Link href="http://html5up.net" color="inherit">HTML5 UP</Link>
+        </Typography>
+      </Box>
+    </Box>
+  );
 }
+
+export default App;
