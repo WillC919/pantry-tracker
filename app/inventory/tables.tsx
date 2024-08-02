@@ -7,110 +7,106 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
-import EditIcon from '@mui/icons-material/Edit';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Container } from '@mui/material';
 
-function createData(name: string, quantity: number) {
-  return { name, quantity };
+// Define the inventory type as a mapping of strings to numbers
+interface Inventory {
+  [name: string]: number;
 }
 
-const rows = [
-  createData('Frozen yoghurt', 1),
-  createData('Ice cream sandwich', 2),
-  createData('Eclair', 3),
-  createData('Cupcake', 4),
-  createData('Gingerbread', 5),
-  createData('Frozen yoghurt', 1),
-  createData('Ice cream sandwich', 2),
-  createData('Eclair', 3),
-  createData('Cupcake', 4),
-  createData('Gingerbread', 5),
-  createData('Frozen yoghurt', 1),
-  createData('Ice cream sandwich', 2),
-  createData('Eclair', 3),
-  createData('Cupcake', 4),
-  createData('Gingerbread', 5),
-  createData('Frozen yoghurt', 1),
-  createData('Ice cream sandwich', 2),
-];
+export default function BasicTable({
+  inventory, 
+  removeItem, 
+  reduceItem
+}: {
+  inventory: Inventory, 
+  removeItem: (name: string) => Promise<void>, 
+  reduceItem: (name: string) => Promise<void>
+}) {
+  // Convert the inventory object to an array of items
+  const rows = Object.entries(inventory).map(([name, quantity]) => ({ name, quantity }));
 
-export default function BasicTable() {
-  const handleEdit = (name: string) => {
-    console.log(`Edit ${name}`);
+  // Handler for reducing the item quantity
+  const handleReduce = (name: string) => {
+    reduceItem(name);
   };
 
+  // Handler for deleting an item
   const handleDelete = (name: string) => {
-    console.log(`Delete ${name}`);
+    removeItem(name);
   };
 
   return (
     <Container>
       <TableContainer 
         component={Paper} 
-        sx={{ borderRadius: 5, padding: 5, margin: 5, overflow: 'hidden', backgroundColor: '#2e3842', maxWidth: '60%' }}
+        sx={{ 
+          borderRadius: 5, // Rounded corners for the table
+          padding: 3, // Padding inside the table container
+          marginTop: 12, // Larger top margin
+          marginBottom: 4, // Moderate bottom margin
+          marginLeft: 2, // Moderate left margin
+          marginRight: 2, // Moderate right margin
+          overflow: 'hidden', 
+          backgroundColor: '#2e3842', 
+          maxWidth: '60%' // Set max width of the table
+        }}
       >
         <Table 
           sx={{
-            backgroundColor: '#2e3842',
-            borderRadius: 3,
+            backgroundColor: '#2e3842', // Background color of the table
+            borderRadius: 3, // Rounded corners for the table
             '& thead th': { 
-              color: '#86a3bf',
-              borderRadius: 'inherit',
-              fontSize: '1rem', // Set font size for header to h6
-              fontWeight: 'bold', // Optional: make the header text bold
+              color: '#86a3bf', // Header text color
+              borderRadius: 'inherit', // Inherit border radius from table
+              fontSize: '1rem', // Font size for header cells
+              fontWeight: 'bold', // Bold header text
             },
             '& tbody td': {
-              color: '#86a3bf',
-              position: 'relative', // Add position relative to the TableCell
+              color: '#86a3bf', // Body text color
+              position: 'relative', // Position relative for icon buttons
             },
             '& .MuiIconButton-root': {
-              color: '#86a3bf',
+              color: '#86a3bf', // Icon button color
             },
             '& th, & td': {
-              borderColor: '#86a3bf',
+              borderColor: '#86a3bf', // Border color for table cells
             },
             '& tr': {
-              borderBottom: `1px solid #86a3bf`,
+              borderBottom: `1px solid #86a3bf`, // Border color for table rows
             }
           }} 
           aria-label="simple table"
         >
           <TableHead>
             <TableRow>
-              <TableCell>Dessert (100g serving)</TableCell>
+              <TableCell>Inventory</TableCell>
               <TableCell align="right">Quantity</TableCell>
-              <TableCell align="right">Edit</TableCell>
+              <TableCell align="right">Reduce</TableCell>
               <TableCell align="right">Delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {rows.map(({ name, quantity }) => (
               <TableRow
-                key={row.name}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                key={name}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }} // Remove border from last row cells
               >
                 <TableCell component="th" scope="row" sx={{ color: '#86a3bf' }}>
-                  {row.name}
+                  {name}
                 </TableCell>
                 <TableCell align="right" sx={{ color: '#86a3bf' }}>
-                  {row.quantity}
+                  {quantity}
                 </TableCell>
-                <TableCell align="right" sx={{ position: 'relative' }}>
-                  <IconButton 
-                    onClick={() => handleEdit(row.name)} 
-                    sx={{ 
-                      position: 'absolute', 
-                      right: 0, 
-                      top: '50%', 
-                      transform: 'translateY(-50%)' 
-                    }}
-                  >
-                    <EditIcon />
+                <TableCell align="right">
+                  <IconButton onClick={() => handleReduce(name)}>
+                    <ArrowDropDownIcon />
                   </IconButton>
                 </TableCell>
                 <TableCell align="right">
-                  <IconButton onClick={() => handleDelete(row.name)}>
+                  <IconButton onClick={() => handleDelete(name)}>
                     <DeleteIcon />
                   </IconButton>
                 </TableCell>

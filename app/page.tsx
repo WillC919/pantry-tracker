@@ -1,10 +1,13 @@
 import React from 'react';
 import { Container, Typography, Button, Box, Link, Grid, IconButton } from '@mui/material';
+import MyAppBar from './navbar'
 import { GitHub, LinkedIn, Email } from '@mui/icons-material';
 
 function App() {
   return (
     <Box>
+      {/* Navbar Section */}
+      <MyAppBar/>
       {/* Banner Section */}
       <Box
         id="banner"
@@ -38,7 +41,7 @@ function App() {
           }}
           href="/inventory"
         >
-          Learn More
+          Get Started
         </Button>
       </Box>
 
@@ -47,7 +50,7 @@ function App() {
         id="one"
         sx={{
           padding: '64px 0',
-          background: 'rgba(33, 178, 166, 1)', // 85% transparent background
+          background: 'rgba(33, 178, 166, 1)',
           width: '100%', // Ensure it covers the entire width of the screen
           position: 'relative',
           margin: '0', // Remove any default margins
@@ -106,7 +109,7 @@ function App() {
           </IconButton>
         </Box>
         <Typography variant="body2" color="textSecondary" sx={{ color: '#fff' }}>
-          &copy; William Lee. Design: <Link href="http://html5up.net" color="inherit">HTML5 UP</Link>
+          Pantry Tracker. Designed: William Lee
         </Typography>
       </Box>
     </Box>
