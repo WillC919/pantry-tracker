@@ -1,7 +1,10 @@
 import React from 'react';
-import { Container, Typography, Button, Box, Link, Grid, IconButton } from '@mui/material';
-import MyAppBar from './navbar'
+import { Container, Typography, Button, Box, Link, Grid, IconButton, Tooltip } from '@mui/material';
 import { GitHub, LinkedIn, Email } from '@mui/icons-material';
+import CodeIcon from '@mui/icons-material/Code';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import SearchIcon from '@mui/icons-material/Search';
+import MyAppBar from './navbar'
 
 function App() {
   return (
@@ -57,8 +60,8 @@ function App() {
         }}
       >
         <Container>
-          <Typography variant="h2" gutterBottom sx={{ color: '#fff', textAlign: 'center' }}>
-            Synopsis of me
+          <Typography variant="h4" gutterBottom sx={{ color: '#fff', textAlign: 'center' }}>
+            About Pantry Tracker
           </Typography>
           <Box
             sx={{
@@ -69,17 +72,58 @@ function App() {
             }}
           />
           <Typography variant="body1" paragraph sx={{ color: '#fff', textAlign: 'center' }}>
-            I am an upcoming senior majoring in Computer Science at Stony Brook University. I enjoy team-building exercises and collaborating with others, particularly those who share my passion for developing solutions through cloud computing.
+            A free easy to use web application that helps you keep catalog of your inventory. It keeps helps your search and count the number of items in your pantry
           </Typography>
-          <Grid container spacing={2} justifyContent="center">
+          <Grid container spacing={4} justifyContent="center"> {/* Increased spacing */}
             <Grid item>
-              <Typography variant="h6" sx={{ color: '#fff' }}>Code</Typography>
+              <Tooltip title="Code">
+                <CodeIcon 
+                  sx={{ 
+                    color: '#fff',
+                    border: '2px solid #fff', // Circle outline
+                    borderRadius: '50%', // Circle shape
+                    fontSize: 24, // Enlarged icon
+                    padding: 2, // Space between icon and border
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }} 
+                />
+              </Tooltip>
             </Grid>
             <Grid item>
-              <Typography variant="h6" sx={{ color: '#fff' }}>Ideas</Typography>
+              <Tooltip title="Count">
+                <ListAltIcon 
+                  sx={{ 
+                    color: '#fff',
+                    border: '2px solid #fff', // Circle outline
+                    borderRadius: '50%', // Circle shape
+                    fontSize: 24, // Enlarged icon
+                    padding: 2, // Space between icon and border
+                    marginLeft: 3,
+                    marginRight: 3, 
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }} 
+                />
+              </Tooltip>
             </Grid>
             <Grid item>
-              <Typography variant="h6" sx={{ color: '#fff' }}>Collaboration</Typography>
+              <Tooltip title="Search">
+                <SearchIcon 
+                  sx={{ 
+                    color: '#fff',
+                    border: '2px solid #fff', // Circle outline
+                    borderRadius: '50%', // Circle shape
+                    fontSize: 24, // Enlarged icon
+                    padding: 2, // Space between icon and border
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }} 
+                />
+              </Tooltip>
             </Grid>
           </Grid>
         </Container>
